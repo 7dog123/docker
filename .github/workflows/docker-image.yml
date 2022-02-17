@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: multiarch/qemu-user-static:latest
+
     steps:
     - uses: actions/checkout@v2
 
@@ -22,4 +22,4 @@ jobs:
     - name: Build the Docker image
       run: |
        docker run --rm --privileged ghcr.io/7dog123/7dog123/mipsel-armhf:latest
-       ls
+       docker image

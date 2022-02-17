@@ -22,4 +22,9 @@ jobs:
     - name: Build the Docker image
       run: |
        docker run --rm --privileged ghcr.io/7dog123/7dog123/mipsel-armhf:latest
-       docker image save ghcr.io/7dog123/7dog123/mipsel-armhf:latest
+       docker ps -a
+
+    - name: ls
+      run: |
+       ls
+       ls /

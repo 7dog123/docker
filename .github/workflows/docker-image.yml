@@ -20,4 +20,6 @@ jobs:
        docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
          
     - name: Build the Docker image
-      run: docker run --rm --privileged ghcr.io/7dog123/7dog123/mipsel-armhf:latest
+      run: |
+       docker run --rm --privileged ghcr.io/7dog123/7dog123/mipsel-armhf:latest
+       ls

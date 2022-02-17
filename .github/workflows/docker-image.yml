@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: multiarch/qemu-user-static
+    container: multiarch/qemu-user-static:latest
     steps:
     - uses: actions/checkout@v2
 

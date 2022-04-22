@@ -29,6 +29,8 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: ee-armhf.tar
+        prerelease: false
+        tag_name: latest
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

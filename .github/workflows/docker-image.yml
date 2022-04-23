@@ -22,13 +22,13 @@ jobs:
     - name: Build the Docker image
       run: |
        docker run --rm --privileged ghcr.io/7dog123/ps2dev-docker/run-on-arch-7dog123-ps2dev-docker-ci-armv7-bullseye:latest
-       docker image save ghcr.io/7dog123/ps2dev-docker/run-on-arch-7dog123-ps2dev-docker-ci-armv7-bullseye:latest > ee-armhf.tar
+       docker image save ghcr.io/7dog123/ps2dev-docker/run-on-arch-7dog123-ps2dev-docker-ci-armv7-bullseye:latest > ee-armhf.1.tar
 
     - name: Release
       if: startsWith(github.ref, 'refs/heads/master')
       uses: softprops/action-gh-release@v1
       with:
-        files: ee-armhf.tar
+        files: ee-armhf.1.tar
         prerelease: false
         tag_name: latest
       env:
@@ -36,5 +36,5 @@ jobs:
 
     #- uses: actions/upload-artifact@v2
      # with:
-      #  name: ee-armhf
-      #  path: ee-armhf.tar
+      #  name: ee-armhf.1
+      #  path: ee-armhf.1.tar

@@ -18,17 +18,23 @@ jobs:
        sudo apt-get update -q -y
        sudo apt-get -qq install -y qemu qemu-user-static
        docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
-         
+        
+    - name: Run the build process with Docker
+      uses: addnab/docker-run-action@v3
+      with:
+        image: ghcr.io/7dog123/7dog123/ee-docker:latest
+        run: rm -rf ps2toolchain-*
+
     - name: Build the Docker image
       run: |
        docker run --rm --privileged ghcr.io/7dog123/7dog123/ee-docker:latest
-       docker image save ghcr.io/7dog123/7dog123/ee-docker:latest > ee-armhf.1.tar
+       docker image save ghcr.io/7dog123/7dog123/ee-docker:latest > ee-armhf.tar
 
     - name: Release
       if: startsWith(github.ref, 'refs/heads/master')
       uses: softprops/action-gh-release@v1
       with:
-        files: ee-armhf.1.tar
+        files: ee-armhf.tar
         prerelease: false
         tag_name: latest
       env:
@@ -36,5 +42,5 @@ jobs:
 
     #- uses: actions/upload-artifact@v2
      # with:
-      #  name: ee-armhf.1
-      #  path: ee-armhf.1.tar
+      #  name: ee-armhf
+      #  path: ee-armhf.tar
